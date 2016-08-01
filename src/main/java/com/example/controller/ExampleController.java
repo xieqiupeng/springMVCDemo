@@ -27,18 +27,18 @@ public class ExampleController {
 //    private ProService proService;
 
     @RequestMapping("/login")
-    public ModelAndView getUser(HttpServletRequest request, HttpServletResponse response){
-        if(LOGGER.isInfoEnabled()){
-            LOGGER.info(TAG+" Start!");
+    public ModelAndView getUser(HttpServletRequest request, HttpServletResponse response) {
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info(TAG + " Start!");
         }
         String userId = request.getParameter("userId");
         User user = exampleService.get(userId);
 //        String masg = proService.sayHello("123123");
 //        user.setUserName(masg);
         ModelAndView mv = new ModelAndView("login");
-        mv.addObject("user",user);
-        if(LOGGER.isInfoEnabled()){
-            LOGGER.info(TAG+" End!");
+        mv.addObject("user", user);
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info(TAG + " End!");
         }
         return mv;
     }
