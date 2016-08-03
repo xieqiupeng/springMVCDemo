@@ -8,4 +8,5 @@ import com.example.model.User;
 public interface ExampleDao {
     public User get(String userId);
 
+    public User login(String mobile, String password);
 }

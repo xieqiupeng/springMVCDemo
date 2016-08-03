@@ -14,7 +14,6 @@
     <title>登陆</title>
 </head>
 <body>
-<img src="${base}/images/abc.jpeg"/>
-<h1>${user.userEmail}-${user.userName}</h1>
+<p>${user}</p>
 </body>
 </html>

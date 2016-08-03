@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.dao.ExampleDao;
+import com.example.dao.impl.ExampleDaoImpl;
 import com.example.model.User;
 import com.example.service.ExampleService;
 
@@ -18,10 +18,15 @@ public class ExampleServiceImpl implements ExampleService {
 //    private static final Logger LOG = LogManager.getLogger(ExampleServiceImpl.class);
 
     @Autowired
-    private ExampleDao exampleDao;
+    private ExampleDaoImpl exampleDao;
 
     @Override
     public User get(String userId) {
         return exampleDao.get(userId);
+    }
+
+    @Override
+    public User login(String mobile, String password) {
+        return exampleDao.login(mobile, password);
     }
 }

@@ -7,4 +7,6 @@ import com.example.model.User;
  */
 public interface ExampleService {
     User get(String userId);
+
+    User login(String mobile, String password);
 }

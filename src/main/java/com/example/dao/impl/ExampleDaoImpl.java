@@ -26,16 +26,62 @@ public class ExampleDaoImpl implements ExampleDao {
 
     @Override
     public User get(String userId) {
-        String sql = "select * from user where userId = ?";
+        String sql = "select * from tl_user where id = ?";
         final User user = new User();
-        jdbcTemplate.query(sql,new Object[]{userId}, new RowCallbackHandler() {
+        jdbcTemplate.query(sql, new Object[]{userId}, new RowCallbackHandler() {
+
             @Override
             public void processRow(ResultSet resultSet) throws SQLException {
-                user.setUserId(resultSet.getString("userId"));
-                user.setUserEmail(resultSet.getString("userEmail"));
-                user.setUserName(resultSet.getString("userName"));
+                user.setId(resultSet.getString("id"));
+                user.setUser_name(resultSet.getString("user_name"));
+                user.setUser_pwd(resultSet.getString("user_pwd"));
+                user.setAddress(resultSet.getString("address"));
+                user.setEmail(resultSet.getString("email"));
+                user.setNick_name(resultSet.getString("nick_name"));
+                user.setIntroduction(resultSet.getString("introduction"));
+                user.setIs_vip(resultSet.getString("is_vip"));
+                user.setIshelp(resultSet.getString("ishelp"));
+                user.setMobile(resultSet.getString("mobile"));
+                user.setCreate_time(resultSet.getString("create_time"));
+                user.setLast_update_time(resultSet.getString("last_update_time"));
+                user.setStatus(resultSet.getString("status"));
+                user.setOpenid(resultSet.getString("openid"));
+                user.setRegister_type(resultSet.getString("register_type"));
+                user.setZizhi(resultSet.getString("zizhi"));
+                user.setZizhi_status(resultSet.getString("zizhi_status"));
             }
         });
         return user;
     }
+
+    @Override
+    public User login(String mobile, String password) {
+        String sql = "select b.*,count(0) num from tl_user b where mobile = ? and user_pwd = \'?\'";
+        final User user = new User();
+        jdbcTemplate.query(sql, new Object[]{mobile, password}, new RowCallbackHandler() {
+
+            @Override
+            public void processRow(ResultSet resultSet) throws SQLException {
+                user.setId(resultSet.getString("id"));
+                user.setUser_name(resultSet.getString("user_name"));
+                user.setUser_pwd(resultSet.getString("user_pwd"));
+                user.setAddress(resultSet.getString("address"));
+                user.setEmail(resultSet.getString("email"));
+                user.setNick_name(resultSet.getString("nick_name"));
+                user.setIntroduction(resultSet.getString("introduction"));
+                user.setIs_vip(resultSet.getString("is_vip"));
+                user.setIshelp(resultSet.getString("ishelp"));
+                user.setMobile(resultSet.getString("mobile"));
+                user.setCreate_time(resultSet.getString("create_time"));
+                user.setLast_update_time(resultSet.getString("last_update_time"));
+                user.setStatus(resultSet.getString("status"));
+                user.setOpenid(resultSet.getString("openid"));
+                user.setRegister_type(resultSet.getString("register_type"));
+                user.setZizhi(resultSet.getString("zizhi"));
+                user.setZizhi_status(resultSet.getString("zizhi_status"));
+            }
+        });
+        return user;
+    }
+
 }
